@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Novitaku sayang!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffccf9, #ccf2ff);
+      color: #333;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-top: 50px;
+      color: #ff69b4;
+    }
+    p {
+      font-size: 1.3rem;
+      margin: 20px;
+    }
+    .heart {
+      position: absolute;
+      color: red;
+      animation: fall 5s linear infinite;
+      font-size: 20px;
+    }
+    @keyframes fall {
+      0% {top: -10px;}
+      100% {top: 100vh;}
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px;
+    }
+    .gallery img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .quiz {
+      margin: 30px;
+    }
+    .quiz input {
+      padding: 10px;
+      font-size: 1rem;
+    }
+    .quiz button {
+      padding: 10px 20px;
+      background: #87ceeb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .photo-section {
+      margin: 40px;
+    }
+    .photo-section img {
+      width: 250px;
+      height: auto;
+      border-radius: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 15px #aaa;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Ganti bagian audio autoplay dengan ini -->
+<button id="playMusic" style="margin:20px; padding:10px 20px; font-size:1rem; background:#ff69b4; color:white; border:none; border-radius:5px; cursor:pointer;">
+  Klik untuk putar musik 🎵
+</button>
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-littleidea.mp3" type="audio/mpeg">
+  Browsermu tidak mendukung audio.
+</audio>
+
+<script>
+  document.getElementById('playMusic').onclick = function() {
+    document.getElementById('bgMusic').play();
+    this.style.display = 'none'; // sembunyikan tombol setelah diklik
+    
+  };
+</script>
+
+  <h1 id="animatedTitle" style="min-height:3rem; color:#ff69b4;"></h1>
+  <script>
+    // Animasi typing effect untuk judul
+    const text = "Selamat sayangku! 🎉";
+    let i = 0;
+    function typeTitle() {
+      if (i < text.length) {
+        document.getElementById("animatedTitle").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeTitle, 80);
+      }
+    }
+    typeTitle();
+  </script>
+  <p>Yaaay! Akhirnya selesai juga KKN kamu pada tanggal <strong>8 Agustus</strong>!<br>
+    Aku bangga banget sama kamu 🥰💖<br>
+     Kamu keren banget sudah melewati perjuangan ini, walau capek-capek tetap senyum terus yaa. Aku selalu dukung kamu 💪✨</p>
+
+  <p>Semoga kamu bisa istirahat dan bahagia setelah ini. Kita bisa jalan-jalan bareng, makan enak, dan melakukan hal yang kita suka! 🎬🍕</p>
+  <!-- Tulisan romantis pengganti gambar -->
+  <span style="display:inline-block; margin:20px 0; font-family:'Dancing Script', cursive; font-size:2.5rem; color:#ff69b4; letter-spacing:2px;">
+    Cute Girlfriend
+  </span>
+  <!-- Google Fonts Dancing Script -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <div class="gallery">
+    <img src="Gambar WhatsApp 2025-08-03 pukul 13.55.44_400fcde9.jpg" alt="couple 1">
+    <img src="Gambar WhatsApp 2025-07-18 pukul 09.11.17_b92ca6bd.jpg" alt="couple 2">
+    <img src="Gambar WhatsApp 2025-08-05 pukul 09.53.45_b002429b.jpg" alt="couple 3">
+  </div>
+
+  <div class="photo-section">
+    <h2>Foto-foto Kita Nih 😚</h2>
+    <img src="Gambar WhatsApp 2025-08-05 pukul 09.52.49_7bc75834.jpg" alt="foto novita 1">
+    <img src="Gambar WhatsApp 2025-08-05 pukul 09.52.50_5433dfb5.jpg" alt="foto novita 2">
+    <img src="Gambar WhatsApp 2025-08-04 pukul 23.04.17_e68d5556.jpg" alt="foto bareng">
+  </div>
+
+  <div class="quiz">
+    <p><strong>Quiz kecil: Siapa yang paling lucu dan paling sayang kamu?</strong></p>
+    <input type="text" id="answer" placeholder="Tulis jawabannya di sini">
+    <button onclick="checkAnswer()">Cek Jawaban</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    // Love animation
+    const hearts = [];
+    for (let i = 0; i < 50; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+      hearts.push(heart);
+    }
+
+    // Quiz function
+    function checkAnswer() {
+  const answer = document.getElementById('answer').value.toLowerCase();
+  const result = document.getElementById('result');
+  if (
+    answer.includes('fika') ||
+    answer.includes('fika sayang') ||
+    answer.includes('fika lucu') ||
+    answer.includes('gantengku')
+  ) {
+    result.innerHTML = 'YEEE BETULLL 😆💖 <span id="confetti"></span>';
+    // Efek confetti emoji
+    for (let i = 0; i < 30; i++) {
+      const conf = document.createElement('span');
+      conf.textContent = '🎉';
+      conf.style.position = 'absolute';
+      conf.style.left = Math.random() * 100 + 'vw';
+      conf.style.top = Math.random() * 60 + 20 + 'vh';
+      conf.style.fontSize = Math.random() * 30 + 20 + 'px';
+      conf.style.pointerEvents = 'none';
+      conf.style.animation = 'confetti-fall 1.5s linear';
+      document.body.appendChild(conf);
+      setTimeout(() => conf.remove(), 1500);
+    }
+  } else {
+    result.innerHTML = 'Yahhh salah, coba pikir lagi siapa yang paling lucu 😝';
+  }
+}
+
+    // CSS untuk efek confetti
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes confetti-fall {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(100vh); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
